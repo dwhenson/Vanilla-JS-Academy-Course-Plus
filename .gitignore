@@ -1,0 +1,17 @@
+# Specify filepatterns you want git to ignore.
+
+node_modules/
+*.sublime-workspace
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+thumbs.db
+Thumbs.db
+.eslintrc
+.stylelintrc.json
+*.codekit3
+package-lock.json
+package.json
+.quokka
