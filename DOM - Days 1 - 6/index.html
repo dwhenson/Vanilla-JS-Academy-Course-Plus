@@ -1,38 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" dir="ltr">
   <head>
-    <title>Password Visibility - Multiple Forms</title>
-
-    <style type="text/css">
-      body {
-        margin: 1em auto;
-        max-width: 40em;
-        width: 88%;
-      }
-
-      label {
-        display: block;
-        width: 100%;
-      }
-
-      input {
-        margin-bottom: 1em;
-      }
-
-      [type='checkbox'] {
-        margin-bottom: 0;
-        margin-right: 0.25em;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>DOM Work</title>
+    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css"
+    />
+    <script src="main.js" defer></script>
   </head>
-  <body>
-    <h1>Password Visibility - Multiple Forms</h1>
+  <body style="width:60%;margin:0,auto;">
+    <h1>Password Visibility</h1>
 
     <h2>Change Username</h2>
 
     <p>Enter your username and password to change your username.</p>
 
-    <form>
+    <form >
       <div>
         <label for="username">Username</label>
         <input type="text" name="username" id="username" />
@@ -43,77 +32,28 @@
         <input type="password" name="password" id="password" />
       </div>
 
-      <div>
-        <label for="show-password">
-          <input type="checkbox" name="show-password" id="show-password" />
-          Show password
-        </label>
-      </div>
-
-      <p>
-        <button type="submit">Change Username</button>
+      <p id="button-state">
       </p>
     </form>
 
-    <h2>Change Password</h2>
+    <!-- <h2>Change Password</h2>
 
     <p>Enter your current password and new password below.</p>
 
     <form>
       <div>
         <label for="current-password">Current Password</label>
-        <input type="password" name="password" id="current-password" />
+        <input type="password" name="current-password" id="current-password" />
       </div>
 
       <div>
         <label for="new-password">New Password</label>
-        <input type="password" name="password" id="new-password" />
-      </div>
-
-      <div>
-        <label for="show-passwords">
-          <input type="checkbox" name="show-passwords" id="show-passwords" />
-          Show passwords
-        </label>
+        <input type="password" name="current-password" id="new-password" />
       </div>
 
       <p>
-        <button type="submit">Change Passwords</button>
+        <button type="button" data-toggle-password="#current-password, #new-password"></button>
       </p>
-    </form>
-
-<<<<<<< HEAD
-
-      
-=======
-    <script>
-
-
-      /**
-       * Element.matches() polyfill (simple version)
-       * https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill
-       */
-      if (!Element.prototype.matches) {
-        Element.prototype.matches =
-          Element.prototype.msMatchesSelector ||
-          Element.prototype.webkitMatchesSelector;
-      }
-
-      document.addEventListener('click', (event) => {
-        // check if the clicked element is a checkbox
-        if (event.target.matches('[type="checkbox"]')) {
-          // get the parent 'form' element the checkbox is located inside
-          const form = event.target.closest('form');
-          // get all the input elements in selected form with the name 'password'; turn into array
-          // NB html edited to adjust name attr to just 'password'
-          const passwordInputs = Array.from(form.querySelectorAll('[name="password"]'));
-          // loop over array of password inputs and change 'type' attr as needed
-          passwordInputs.forEach((input) => {
-            event.target.checked ? (input.type = 'text') : (input.type = 'password');
-          });
-        }
-      });
->>>>>>> origin/master
-    </script>
+    </form> -->
   </body>
 </html>
