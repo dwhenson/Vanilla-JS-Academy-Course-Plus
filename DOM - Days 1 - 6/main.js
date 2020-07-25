@@ -21,6 +21,9 @@
   }
 
   function clickHandler(event) {
+    const button = event.target.parentElement.id;
+    console.log(button);
+    console.log(buttonSingle);
     if (!event.target.matches('[data-toggle-password]')) return;
     const passwords = Array.from(
       document.querySelectorAll(
@@ -43,7 +46,7 @@
   }
 
   /* ==========  Button Instance  ========== */
-  const buttonSingle = new Button('#button-single', {
+  const buttonSingle = new Button('#buttonSingle', {
     data: {
       hidden: true,
     },
