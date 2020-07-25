@@ -12,17 +12,14 @@
     this.element.innerHTML = this.template(this.data);
   };
 
-  /* ==========  Button Instance  ========== */
-  const button = new Button('#button-state', {
-    data: {
-      hidden: true,
-    },
-    template(props) {
-      return renderButtonHTML(props);
-    },
-  });
-
   /* ==========  Functions  ========== */
+
+  function changeButtonState() {
+    return buttonSingle.data.hidden //
+      ? (buttonSingle.data.hidden = false)
+      : (buttonSingle.data.hidden = true);
+  }
+
   function clickHandler(event) {
     if (!event.target.matches('[data-toggle-password]')) return;
     const passwords = Array.from(
@@ -31,29 +28,31 @@
       )
     );
     passwords.forEach((password) => {
-      button.data.hidden //
+      buttonSingle.data.hidden //
         ? (password.type = 'text')
         : (password.type = 'password');
     });
     changeButtonState();
-    button.render();
-  }
-
-  function changeButtonState() {
-    return button.data.hidden //
-      ? (button.data.hidden = false)
-      : (button.data.hidden = true);
+    buttonSingle.render();
   }
 
   function renderButtonHTML(props) {
     return props.hidden
       ? ` <button type="button" aria-live="polite" data-toggle-password="#password">Show Password</button>`
       : ` <button type="button" aria-live="polite" data-toggle-password="#password">Hide Password</button>`;
-    changeButtonState();
   }
 
+  /* ==========  Button Instance  ========== */
+  const buttonSingle = new Button('#button-single', {
+    data: {
+      hidden: true,
+    },
+    template(props) {
+      return renderButtonHTML(props);
+    },
+  });
   /* ==========  Inits and Event Listeners  ========== */
 
-  button.render();
+  buttonSingle.render();
   document.addEventListener('click', clickHandler);
 })();
