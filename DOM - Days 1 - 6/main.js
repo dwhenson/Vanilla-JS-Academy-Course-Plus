@@ -1,5 +1,7 @@
 // avoid global scope
 (function () {
+  /* ==========  Variables  ========== */
+
   /* ==========  Constructor  ========== */
 
   const Button = function (selector, options) {
@@ -12,18 +14,39 @@
     this.element.innerHTML = this.template(this.data);
   };
 
+  /* ==========  Button Instance  ========== */
+  const buttonSingle = new Button('#buttonSingle', {
+    data: {
+      hidden: true,
+      type: 'buttonSingle',
+    },
+    template(props) {
+      return renderButtonHTML(props);
+    },
+  });
+
+  const buttonDouble = new Button('#buttonDouble', {
+    data: {
+      hidden: true,
+      type: 'buttonDouble',
+    },
+    template(props) {
+      return renderButtonHTML(props);
+    },
+  });
+
   /* ==========  Functions  ========== */
 
-  function changeButtonState() {
-    return buttonSingle.data.hidden //
-      ? (buttonSingle.data.hidden = false)
-      : (buttonSingle.data.hidden = true);
-  }
+  const buttons = [buttonSingle, buttonDouble];
+  let targetButton;
 
   function clickHandler(event) {
-    const button = event.target.parentElement.id;
-    console.log(button);
-    console.log(buttonSingle);
+    buttons.forEach((button) => {
+      if (button.data.type === event.target.parentElement.id) {
+        targetButton = button;
+      }
+    });
+
     if (!event.target.matches('[data-toggle-password]')) return;
     const passwords = Array.from(
       document.querySelectorAll(
@@ -31,12 +54,18 @@
       )
     );
     passwords.forEach((password) => {
-      buttonSingle.data.hidden //
+      targetButton.data.hidden //
         ? (password.type = 'text')
         : (password.type = 'password');
     });
     changeButtonState();
-    buttonSingle.render();
+    targetButton.render();
+  }
+
+  function changeButtonState() {
+    return targetButton.data.hidden //
+      ? (targetButton.data.hidden = false)
+      : (targetButton.data.hidden = true);
   }
 
   function renderButtonHTML(props) {
@@ -45,17 +74,9 @@
       : ` <button type="button" aria-live="polite" data-toggle-password="#password">Hide Password</button>`;
   }
 
-  /* ==========  Button Instance  ========== */
-  const buttonSingle = new Button('#buttonSingle', {
-    data: {
-      hidden: true,
-    },
-    template(props) {
-      return renderButtonHTML(props);
-    },
-  });
   /* ==========  Inits and Event Listeners  ========== */
 
   buttonSingle.render();
+  buttonDouble.render();
   document.addEventListener('click', clickHandler);
 })();
