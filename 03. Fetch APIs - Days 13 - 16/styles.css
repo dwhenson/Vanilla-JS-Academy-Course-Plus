@@ -3,8 +3,48 @@ body {
 }
 
 .inputs {
-  margin: 5em;
   display: flex;
-  gap: 1em;
   align-items: center;
+  justify-content: space-between;
+  margin: 1em;
+}
+
+.outputs {
+  column-gap: 0;
+  column-count: 4;
+  line-height: 0;
+}
+
+.outputs img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.outputs img:hover,
+.outputs img:focus {
+  border: 3px solid blue;
+}
+
+@media (max-width: 1200px) {
+  .outputs {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 1000px) {
+  .outputs {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  .outputs {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 400px) {
+  .outputs {
+    column-count: 1;
+  }
 }
