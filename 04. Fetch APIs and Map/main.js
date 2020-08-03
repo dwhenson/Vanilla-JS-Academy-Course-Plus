@@ -19,18 +19,22 @@ function renderStories (articles) {
     <h2><a href="${story.url}">${story.title}</a></h2>
       <h3>${story.byline}</h3>
       <p>${story.abstract}</p>
-      <figure>
+      ${
+      story.media[0]
+      ? `<figure>
         <img
-        src="${story.media[0] ? story.media[0]['media-metadata'][2].url : ''}"
+        src="${story.media[0]['media-metadata'][2].url}"
         alt=""
-        height="${story.media[0] ? 294 : 0}"
-        width="${story.media[0] ? 440 : 0}">
+        height="${294}"
+        width="${440}">
           <figcaption>
-          ${story.media[0] ? story.media[0].caption : ''}
+          ${story.media[0].caption}
           </figcaption>
-      </figure>
-    `}).join('');
-}
+      </figure>`
+      : ''
+      }  `}).join('');
+  }
+
 
 function fetchStories () {
   fetch(endpoint + apiKey)
