@@ -18,6 +18,12 @@
   ];
 
   /* ==========  Functions  ========== */
+
+  /**
+   * shuffles the items in an array
+   * @param   {Array}  array  the array to shuffle
+   * @return  {Array}         the shuffled array
+   */
   const shuffle = function (array) {
     let currentIndex = array.length;
     let temporaryValue;
@@ -33,6 +39,12 @@
     return array;
   };
 
+  /**
+   * renders the items from an array to HTML
+   * @param   {Array}  array    the array of items to render
+   * @param   {Object}  element  the html element to insert items
+   * @return  {String}           the html
+   */
   function renderMonsters(array, element) {
     const suffledArray = shuffle(array);
     element.innerHTML = `<div class="row">
@@ -49,6 +61,10 @@
       </div>`;
   }
 
+  /**
+   * handles click events
+   * @param   {Event}  event  the event object
+   */
   function clickHandler(event) {
     const monster = event.target.closest('[data-monster-id]');
     if (!monster) return;
