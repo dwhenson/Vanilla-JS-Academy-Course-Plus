@@ -34,20 +34,30 @@
   };
 
   function renderMonsters(array, element) {
-    const suffledArray = shuffle(array.slice());
+    const suffledArray = shuffle(array);
     element.innerHTML = `<div class="row">
     ${suffledArray
-      .map(function (monster) {
+      .map(function (monster, index) {
         return `
-      <div class="grid">
-        <img src="images/${monster}.svg" alt="${monster}" width="" height="">
+      <div class="grid" aria-live="polite">
+        <button data-monster-id=${index}>
+        	<img src="images/door.svg" alt="click the door to reveal the monster" width="" height="">
+        </button>
       </div>`;
       })
       .join('')}
       </div>`;
   }
 
-  /* ==========  Inits and Event Listeners  ========== */
+  function clickHandler(event) {
+    const monster = event.target.closest('[data-monster-id]');
+    if (!monster) return;
+    const id = monster.getAttribute('data-monster-id');
+    monster.parentElement.innerHTML = `
+		<img src="images/${monsters[id]}.svg" alt="monster number ${id}">`;
+  }
 
+  /* ==========  Inits and Event Listeners  ========== */
   renderMonsters(monsters, app);
+  app.addEventListener('click', clickHandler);
 })();

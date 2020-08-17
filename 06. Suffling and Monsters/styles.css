@@ -13,9 +13,11 @@
 }
 
 img {
-  height: auto;
   max-width: 100%;
+  height: auto;
 }
 
-
-com
+[data-monster-id] {
+  border: 0;
+  background-color: transparent;
+}

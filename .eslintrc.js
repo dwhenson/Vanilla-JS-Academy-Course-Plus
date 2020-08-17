@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   extends: ['airbnb', 'prettier', 'plugin:node/recommended'],
-  plugins: ['prettier'],
+  plugins: ['prettier', 'html'],
   parserOptions: {
     ecmaVersion: 11,
     sourceType: 'module',
@@ -18,5 +18,6 @@ module.exports = {
     'no-process-exit': 'off',
     'object-shorthand': 'off',
     'class-methods-use-this': 'off',
+    'no-param-reassign': [2, { props: false }],
   },
 };
