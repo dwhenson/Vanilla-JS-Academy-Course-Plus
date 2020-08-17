@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>What to read today?</title>
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
+    <link
+      rel="stylesheet"
+      <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css"
+    />
+  </head>
+  <body>
+    <h1>Want something to read today?</h1>
+
+    <label for="topics">Choose from one of the following topics from the New York Times:</label>
+
+    <select style="display:inline-block" name="topics" id="topics">
+      <option selected disabled hidden> Click to Select</option>
+      <option value="Books">Books</option>
+      <option value="Food">Food</option>
+      <option value="Home">Home</option>
+      <option value="Movies">Movies</option>
+      <option value="Science">Science</option>
+      <option value="Sunday-Review">Sunday Review</option>
+      <option value="Technology">Technology</option>
+      <option value="Travel">Travel</option>
+    </select>
+
+    <h2 id=heading></h2>
+    <div id="app" aria-live="polite">
+      <p id="placeholder"></p>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
+

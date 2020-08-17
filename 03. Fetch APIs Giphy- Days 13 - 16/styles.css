@@ -16,8 +16,8 @@ body {
 }
 
 .outputs img {
-  width: 100% !important;
-  height: auto !important;
+  width: 100%;
+  height: auto;
 }
 
 .outputs img:hover,
