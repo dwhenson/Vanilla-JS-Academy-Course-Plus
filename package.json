@@ -1,7 +1,7 @@
 {
   "name": "javascript30",
   "version": "1.0.0",
-  "description": "Wes Bos JS30 Files",
+  "description": "Vanilla JS Academy Extra Credit Files",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,5 +23,8 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "prettier": "^2.0.5",
     "stylelint-config-property-sort-order-smacss": "^6.3.0"
+  },
+  "dependencies": {
+    "lit-html": "^1.2.1"
   }
 }

@@ -4,7 +4,7 @@ module.exports = {
     es2020: true,
     node: true,
   },
-  extends: ['airbnb', 'prettier', 'plugin:node/recommended'],
+  extends: ['airbnb', 'prettier'],
   plugins: ['prettier', 'html'],
   parserOptions: {
     ecmaVersion: 11,
