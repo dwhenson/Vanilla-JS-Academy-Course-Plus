@@ -123,16 +123,16 @@
     if (!monster) return;
 
     const id = monster.getAttribute('data-monster-id');
+    if (monsters[id] === 'sock') {
+      lost();
+      return;
+    }
+
     monster.parentElement.innerHTML = `
     <img src="images/${monsters[id]}.svg" alt="monster number ${id}">`;
-
     count += 1;
     if (count === monsters.length - 1) {
       won();
-      return;
-    }
-    if (monsters[id] === 'sock') {
-      lost();
     }
   }
   /* ==========  Inits and Event Listeners  ========== */
