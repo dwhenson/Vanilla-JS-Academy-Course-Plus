@@ -6,6 +6,11 @@
 
 	/* ==========  Functions  ========== */
 
+	/**
+	 * Creates an id based on an element's textContent
+	 * @param   {Object}  item  The element requiring an id
+	 * @return  {String}        The text of the id to insert
+	 */
 	function createId(item) {
 		return item.textContent
 			.toLowerCase()
@@ -13,6 +18,11 @@
 			.replace(/-(-)*/g, '-');
 	}
 
+	/**
+	 * Checks if items in array have an id, and assigns one if not
+	 * @param   {Array}  array	The array of elements to check ids on
+	 * @return  {Object}				The element with an existing or added id
+	 */
 	function checkId(array) {
 		array.map(function (item) {
 			return item.id ? item : (item.id = createId(item));
