@@ -47,9 +47,9 @@
    * @return  {String}           The html
    */
   function renderMonsters(array, element) {
-    const suffledArray = shuffle(array);
+    const shuffledArray = shuffle(array);
     element.innerHTML = `<div class="row">
-      ${suffledArray
+      ${shuffledArray
         .map(function (monster, index) {
           return ` <div class="grid" aria-live="polite">
             <button data-monster-id=${index}>
