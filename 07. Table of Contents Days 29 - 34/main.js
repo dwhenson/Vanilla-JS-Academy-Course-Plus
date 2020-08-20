@@ -1,9 +1,4 @@
-// GOAL: When creating your table of contents, if the heading doesn’t have an ID to link to, create one and assign it to the heading.
-
-// STEPS
-// Create function that checks if id is there, and if not gets the textContent and converts to lower case and kebab case (i.e. replaced space with a -)
-
-// avoid global scope
+// Avoid global scope
 (function () {
 	/* ==========  Variables  ========== */
 	const toc = document.querySelector('#table-of-contents');
@@ -12,13 +7,15 @@
 	/* ==========  Functions  ========== */
 
 	function createId(item) {
-		return item.textContent.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+		return item.textContent
+			.toLowerCase()
+			.replace(/[^\w]/g, '-')
+			.replace(/-(-)*/g, '-');
 	}
 
 	function checkId(array) {
-		array.forEach((item) => {
-			if (item.id) return;
-			item.innerHTML = `<h2 id=${createId(item)}>${item.textContent}</h2>`;
+		array.map(function (item) {
+			return item.id ? item : (item.id = createId(item));
 		});
 	}
 
@@ -29,7 +26,7 @@
 	 * @return  {String}           The HTML to render
 	 */
 	function render(element, array) {
-		checkId(headers);
+		checkId(array);
 		element.innerHTML = `
     <ol>
     ${array
@@ -43,6 +40,5 @@
 	}
 
 	/* ==========  Inits and Event Listeners  ========== */
-
 	render(toc, headers);
 })();
