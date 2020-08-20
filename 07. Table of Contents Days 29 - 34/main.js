@@ -2,7 +2,7 @@
 (function () {
 	/* ==========  Variables  ========== */
 	const toc = document.querySelector('#table-of-contents');
-	const headers = Array.from(document.querySelectorAll('h2'));
+	const headers = Array.from(document.querySelectorAll('h2, h3, h4'));
 
 	/* ==========  Functions  ========== */
 
@@ -38,15 +38,17 @@
 	function render(element, array) {
 		checkId(array);
 		element.innerHTML = `
-    <ol>
+    <ul class="toc">
     ${array
 			.map(function (item) {
 				return ` <li>
-        <a href="#${item.id}">${item.textContent}</a>
-        </li>`;
+					<a href="#${
+						item.id
+					}" class="${item.tagName.toLowerCase()}">${item.textContent}</a>
+				</li>`;
 			})
 			.join('')}
-    </ol>`;
+    </ul>`;
 	}
 
 	/* ==========  Inits and Event Listeners  ========== */

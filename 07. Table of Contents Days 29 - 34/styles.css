@@ -1,20 +1,20 @@
-.row {
-	display: grid;
-	grid-template-columns: auto auto auto;
-	text-align: center;
+.toc {
+	padding-left: 1em;
+	list-style: none;
 }
 
-.grid {
-	min-height: 9.6em;
-	padding: 1em;
+.h2 {
+	display: inline-block;
+	margin-top: 0.5em;
+	font-size: 20px;
 }
 
-img {
-	max-width: 100%;
-	height: auto;
+.h3 {
+	margin-left: 4ch;
+	font-size: 18px;
 }
 
-[data-monster-id] {
-	border: 0;
-	background-color: transparent;
+.h4 {
+	margin-left: 6ch;
+	font-size: 18px;
 }
