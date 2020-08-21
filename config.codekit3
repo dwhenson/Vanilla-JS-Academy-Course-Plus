@@ -9,6 +9,14 @@
 	],
 "creatorBuild": "32186",
 "files": {
+	"/.editorconfig": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/.editorconfig",
+		"oF": 0
+		},
 	"/.eslintrc.js": {
 		"bF": 0,
 		"ft": 64,
@@ -28,29 +36,29 @@
 		"oAP": "/.gitignore",
 		"oF": 0
 		},
-	"/.prettierrc": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/.prettierrc",
-		"oF": 0
-		},
-	"/.stylelintrc.json": {
+	"/.prettierrc.json": {
 		"ft": 524288,
 		"oA": 1,
-		"oAP": "/.stylelintrc-min.json",
+		"oAP": "/.prettierrc-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
 		},
-	"/.vscode/spellright.dict": {
+	"/.stylelintrc": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/.vscode/spellright.dict",
+		"oAP": "/.stylelintrc",
 		"oF": 0
+		},
+	"/.vscode/settings.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/.vscode/settings-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
 		},
 	"/01. DOM - Days 1 - 6/index.html": {
 		"cB": 0,
@@ -197,172 +205,321 @@
 		"sC": 0,
 		"tS": 1
 		},
-	"/05. Fetch APIs-Categories - Days 18 - 22/styles.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/05. Fetch APIs-Categories - Days 18 - 22/styles-min.css",
-		"oF": 0,
-		"oS": 2
-		},
-	"/06. Suffling and Monsters/images/door.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/door.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/door.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/door.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster1.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster1.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster1.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster1.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster10.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster10.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster10.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster10.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster11.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster11.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster11.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster11.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster2.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster2.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster2.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster2.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster3.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster3.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster3.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster3.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster4.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster4.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster4.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster4.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster5.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster5.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster5.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster5.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster6.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster6.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster6.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster6.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster7.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster7.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster7.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster7.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster8.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster8.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster8.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster8.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/monster9.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/monster9.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/monster9.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/monster9.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/images/sock.svg": {
+	"/06. Suffling and Monsters Days 23 - 28/images/sock.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "/06. Suffling and Monsters/images/sock.svg",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/images/sock.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 52780316221407,
 		"prP": 0
 		},
-	"/06. Suffling and Monsters/index.html": {
+	"/06. Suffling and Monsters Days 23 - 28/index.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/06. Suffling and Monsters/index.html",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/index.html",
 		"oF": 0
 		},
-	"/06. Suffling and Monsters/main.js": {
+	"/06. Suffling and Monsters Days 23 - 28/main.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 0,
 		"oA": 1,
-		"oAP": "/06. Suffling and Monsters/main-min.js",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/main-min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 1
 		},
-	"/06. Suffling and Monsters/styles.css": {
+	"/06. Suffling and Monsters Days 23 - 28/styles.css": {
 		"aP": 0,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "/06. Suffling and Monsters/styles-min.css",
+		"oAP": "/06. Suffling and Monsters Days 23 - 28/styles-min.css",
+		"oF": 0,
+		"oS": 2
+		},
+	"/07. Table of Contents Days 29 - 34/images/door.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/door.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster1.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster1.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster10.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster10.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster11.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster11.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster2.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster2.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster3.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster3.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster4.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster4.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster5.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster5.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster6.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster6.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster7.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster7.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster8.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster8.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/monster9.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/monster9.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/images/sock.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/07. Table of Contents Days 29 - 34/images/sock.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/07. Table of Contents Days 29 - 34/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/07. Table of Contents Days 29 - 34/index.html",
+		"oF": 0
+		},
+	"/07. Table of Contents Days 29 - 34/main.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/07. Table of Contents Days 29 - 34/main-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 1
+		},
+	"/07. Table of Contents Days 29 - 34/styles.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/07. Table of Contents Days 29 - 34/styles-min.css",
 		"oF": 0,
 		"oS": 2
 		},
@@ -414,7 +571,7 @@
 	},
 "projectAttributes": {
 	"creationDate": 619353158.51491904,
-	"displayValue": "Foundations-Academy-Plus",
+	"displayValue": "foundations-academy-plus",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "brackets-verd",
 	"iconImageWasSetByUser": 0

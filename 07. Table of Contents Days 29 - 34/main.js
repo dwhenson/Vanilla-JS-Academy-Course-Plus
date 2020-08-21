@@ -41,10 +41,9 @@
     <ul class="toc">
     ${array
 			.map(function (item) {
-				return ` <li>
-					<a href="#${
-						item.id
-					}" class="${item.tagName.toLowerCase()}">${item.textContent}</a>
+				return `<li>
+					<a href="#${item.id}" class="${item.tagName.toLowerCase()}">
+					${item.textContent}</a>
 				</li>`;
 			})
 			.join('')}
