@@ -2,11 +2,16 @@
 (function () {
 	/* ==========  Variables  ========== */
 	const app = document.querySelector("#app");
+	const weatherApiKey = "c81e60446f394ac3b6efb4b5c187cafa";
 	const locationEndpoint = "https://ipapi.co/json/";
 	const weatherEndpoint = "https://api.weatherbit.io/v2.0/current?";
-	const weatherAPI = "c81e60446f394ac3b6efb4b5c187cafa";
 
 	/* ==========  Functions  ========== */
+
+	function handleError(err) {
+		console.log(err);
+		app.innerHTML = `<h2>We're sorry. Something went wrong fetching your weather information</h2>`;
+	}
 
 	/**
 	 * Render required information from an object to HTML
@@ -27,11 +32,11 @@
 	async function getWeather() {
 		const locationResponse = await fetch(locationEndpoint);
 		const locationData = await locationResponse.json();
-		const weatherResponse = await fetch(`${weatherEndpoint}city=${locationData.city}&key=${weatherAPI}`);
+		const weatherResponse = await fetch(`${weatherEndpoint}city=${locationData.city}&key=${weatherApiKey}`);
 		const weatherData = await weatherResponse.json();
 		renderHTML(weatherData.data[0]);
 	}
 
 	/* ==========  Inits and Event Listeners  ========== */
-	getWeather();
+	getWeather().catch(handleError);
 })();
