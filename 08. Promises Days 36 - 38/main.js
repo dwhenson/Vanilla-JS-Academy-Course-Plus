@@ -33,6 +33,5 @@
 	}
 
 	/* ==========  Inits and Event Listeners  ========== */
-
 	getWeather();
 })();
