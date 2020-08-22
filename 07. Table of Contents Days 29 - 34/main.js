@@ -1,8 +1,8 @@
 // Avoid global scope
 (function () {
 	/* ==========  Variables  ========== */
-	const toc = document.querySelector('#table-of-contents');
-	const headers = Array.from(document.querySelectorAll('h2, h3, h4'));
+	const toc = document.querySelector("#table-of-contents");
+	const headers = Array.from(document.querySelectorAll("h2, h3, h4"));
 
 	/* ==========  Functions  ========== */
 
@@ -12,10 +12,7 @@
 	 * @return  {String}        The text of the id to insert
 	 */
 	function createId(item) {
-		return item.textContent
-			.toLowerCase()
-			.replace(/[^\w]/g, '-')
-			.replace(/-(-)*/g, '-');
+		return item.textContent.toLowerCase().replace(/[^\w]/g, "-").replace(/-(-)*/g, "-");
 	}
 
 	/**
@@ -46,7 +43,7 @@
 					${item.textContent}</a>
 				</li>`;
 			})
-			.join('')}
+			.join("")}
     </ul>`;
 	}
 

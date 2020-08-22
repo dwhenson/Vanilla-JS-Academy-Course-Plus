@@ -1,5 +1,15 @@
 body {
 	width: 88%;
-	max-width: 30em;
+
+	/* max-width: 30em; */
 	margin: 1em auto;
+}
+
+#app {
+	display: flex;
+	align-items: center;
+}
+
+img {
+	height: 100%;
 }
