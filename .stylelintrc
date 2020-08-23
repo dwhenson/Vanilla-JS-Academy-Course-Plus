@@ -2,10 +2,20 @@
 	"extends": [
 		"stylelint-config-standard",
 		"stylelint-config-property-sort-order-smacss",
-		"./node_modules/prettier-stylelint/config.js"
+		"stylelint-config-prettier"
 	],
 	"defaultSeverity": "warning",
 	"rules": {
-		"indentation": "tab"
+		"indentation": "tab",
+		"rule-empty-line-before": [
+			"always-multi-line",
+			{
+				"ignore": [
+					"after-comment",
+					"first-nested",
+					"inside-block"
+				]
+			}
+		]
 	}
 }
