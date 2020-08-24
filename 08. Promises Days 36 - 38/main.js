@@ -3,7 +3,6 @@
 	/* ==========  Variables  ========== */
 	// fixed parameters
 	const weatherApiKey = "c81e60446f394ac3b6efb4b5c187cafa";
-	const locationEndpoint = "https://ipapi.co/json/";
 	const weatherEndpoint = "https://api.weatherbit.io/v2.0/current?";
 	const app = document.querySelector("#app");
 
@@ -47,24 +46,11 @@
 		// default options
 		const defaults = {
 			message: "It is currently {{temp}} &degC with {{conditions}} in {{city}} right now.",
-			units: "celsius",
 			icon: true,
 			error: "Sorry, we can't get the weather for you right now",
 		};
 		const settings = Object.assign(defaults, options);
 		renderHTML(settings, weatherData);
-	}
-
-	/**
-	 * Get fetch a users location and call the weatherbit API based on first values fetched
-	 * @return  {Object}  The object returned by the weatherbit ajax call
-	 */
-	async function getWeather(options) {
-		const locationResponse = await fetch(locationEndpoint);
-		const locationData = await locationResponse.json();
-		const weatherResponse = await fetch(`${weatherEndpoint}city=${locationData.city}&key=${weatherApiKey}`);
-		const weatherData = await weatherResponse.json();
-		weatherPlugin(options, weatherData.data[0]);
 	}
 
 	/**
@@ -77,9 +63,29 @@
 		console.error(error);
 	}
 
-	getWeather({
-		icon: true,
-		message: "It's {{temp}} &degC in Nairobi and Sonal is freezing cold!!",
-	}).catch(handleError);
+	function retrieveCoords() {
+		return new Promise(function (resolve, reject) {
+			navigator.geolocation.getCurrentPosition(resolve, reject);
+		});
+	}
+
+	/**
+	 * Get fetch a users location and call the weatherbit API based on first values fetched
+	 * @return  {Object}  The object returned by the weatherbit ajax call
+	 */
+	async function getWeather(options) {
+		const coords = {};
+		const position = await retrieveCoords();
+		coords.latitude = position.coords.latitude;
+		coords.longitude = position.coords.longitude;
+
+		const weatherResponse = await fetch(
+			`${weatherEndpoint}lat=${coords.latitude}&lon=${coords.longitude}&key=${weatherApiKey}`
+		);
+		const weatherData = await weatherResponse.json();
+		weatherPlugin(options, weatherData.data[0]);
+	}
+
+	getWeather().catch(handleError);
 	// Close void global scope
 })();
