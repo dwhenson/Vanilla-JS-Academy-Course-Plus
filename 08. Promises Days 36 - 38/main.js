@@ -1,15 +1,3 @@
-// GOAL modify our weather app script to convert it into a plugin.
-// Pass in their own selector to render the weather into.
-// Decide whether to show temperatures in Fahrenheit of Celsius.
-// Change what message is shown (ex. It's currently {temperature} and {conditions} in {location}).
-// Enable or disable the icon for the weather conditions.
-// STEPS:
-// 1) Remove IIFE and replace with function (options)
-// 2) Create an object of default options for user choices
-// 3) Use Object.assign to merge user choices into default
-// 4) Add options object and key value pairs for choices to function call
-// 5) Replace hard coded text with new variables from object (e.g. message text, degrees etc)
-
 // Avoid global scope
 (function () {
 	/* ==========  Variables  ========== */
@@ -21,29 +9,29 @@
 
 	/* ==========  Functions  ========== */
 
-	function weatherPlugin(options, weatherData) {
-		// default options
-		const defaults = {
-			message: "It is currently {{temp}} degrees {{units}} with {{conditions}} in {{city}}",
-			units: "celsius",
-			icon: true,
-			error: "Sorry, we can't get the weather for you right now",
-		};
-		const settings = Object.assign(defaults, options);
-		renderHTML(settings, weatherData);
-	}
-
+	/**
+	 * Updates the message rendered in HTML by Weather plugin function
+	 * @param   {Object}  settings     The options passed in by the user when called
+	 * @param   {Object}  weatherData  The data returned from the API call
+	 * @return  {String}               The update message to render (with updated parameters)
+	 */
 	function updateMessage(settings, weatherData) {
-		console.log(weatherData);
 		return settings.message
 			.replace("{{temp}}", weatherData.temp)
-			.replace("{{conditions}}", weatherData.weather.description)
+			.replace("{{conditions}}", weatherData.weather.description.toLowerCase())
 			.replace("{{city}}", weatherData.city_name);
 	}
 
+	/**
+	 * Enables the icon to be shown or not
+	 * @param   {Object}  settings     The options passed in by the user when called
+	 * @param   {Object}  weatherData  The data returned from the API call
+	 * @return  {String}               The update message to render (with updated parameters)
+	 */
 	function includeIcon(settings, weatherData) {
 		return settings.icon ? `<img src="icons/${weatherData.weather.icon}.png" alt=""/>` : ``;
 	}
+
 	/**
 	 * Render required information from an object to HTML
 	 * @param   {Object}  weather  The weatherData object returned by getWeather
@@ -55,9 +43,21 @@
 			<h2>${updateMessage(settings, weatherData)}</h2>`;
 	}
 
+	function weatherPlugin(options, weatherData) {
+		// default options
+		const defaults = {
+			message: "It is currently {{temp}} &degC with {{conditions}} in {{city}} right now.",
+			units: "celsius",
+			icon: true,
+			error: "Sorry, we can't get the weather for you right now",
+		};
+		const settings = Object.assign(defaults, options);
+		renderHTML(settings, weatherData);
+	}
+
 	/**
 	 * Get fetch a users location and call the weatherbit API based on first values fetched
-	 * @return  {Object}  The object returned by the weatherbit API fetch
+	 * @return  {Object}  The object returned by the weatherbit ajax call
 	 */
 	async function getWeather(options) {
 		const locationResponse = await fetch(locationEndpoint);
@@ -73,10 +73,13 @@
 	 * @return  {String}         The error message to render
 	 */
 	function handleError(error) {
-		console.log(error);
 		app.innerHTML = `<h2>We're sorry. Something went wrong fetching your weather information.</h2>`;
+		console.error(error);
 	}
 
-	getWeather({ icon: true }).catch(handleError);
-	// Avoid global scope
+	getWeather({
+		icon: true,
+		message: "It's {{temp}} &degC in Nairobi and Sonal is freezing cold!!",
+	}).catch(handleError);
+	// Close void global scope
 })();
