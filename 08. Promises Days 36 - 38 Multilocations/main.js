@@ -3,11 +3,11 @@
 	/* ==========  Variables  ========== */
 	// fixed parameters
 	const weatherApiKey = "c81e60446f394ac3b6efb4b5c187cafa";
+	const locationEndpoint = "https://ipapi.co/json/";
 	const weatherEndpoint = "https://api.weatherbit.io/v2.0/current?";
 	const app = document.querySelector("#app");
 
 	/* ==========  Functions  ========== */
-
 	/**
 	 * Handle any errors during the fetches
 	 * @param   {Object}  error  The type of error
@@ -47,7 +47,11 @@
 	 * @return  {String}           The HTML to render
 	 */
 	function renderHTML(settings, weatherData) {
-		app.innerHTML = `
+		if (app.previousElementSibling.className === "intro") {
+			app.previousElementSibling.remove();
+		}
+
+		app.innerHTML += `
 			<div>${includeIcon(settings, weatherData)}</div>
 			<h2>${updateMessage(settings, weatherData)}</h2>`;
 	}
@@ -58,34 +62,31 @@
 			message: "It is currently {{temp}} &degC with {{conditions}} in {{city}} right now.",
 			icon: true,
 			error: "Sorry, we can't get the weather for you right now",
+			locations: [],
 		};
 		const settings = Object.assign(defaults, options);
 		renderHTML(settings, weatherData);
-	}
-
-	function retrieveCoords() {
-		return new Promise(function (resolve, reject) {
-			navigator.geolocation.getCurrentPosition(resolve, reject);
-		});
 	}
 
 	/**
 	 * Get fetch a users location and call the weatherbit API based on first values fetched
 	 * @return  {Object}  The object returned by the weatherbit ajax call
 	 */
-	async function getWeather(options) {
-		const coords = {};
-		const position = await retrieveCoords();
-		coords.latitude = position.coords.latitude;
-		coords.longitude = position.coords.longitude;
-
-		const weatherResponse = await fetch(
-			`${weatherEndpoint}lat=${coords.latitude}&lon=${coords.longitude}&key=${weatherApiKey}`
-		);
-		const weatherData = await weatherResponse.json();
-		weatherPlugin(options, weatherData.data[0]);
+	function getWeather(options) {
+		options.locations.forEach((city) => {
+			fetch(`${weatherEndpoint}city=${city}&key=${weatherApiKey}`)
+				.then(function (response) {
+					return response.ok ? response.json() : Promise.reject(response);
+				})
+				.then(function (weatherData) {
+					weatherPlugin(options, weatherData.data[0]);
+				})
+				.catch(function () {
+					handleError();
+				});
+		});
 	}
 
-	getWeather().catch(handleError);
+	getWeather({ locations: ["Nairobi", "London"] });
 	// Close void global scope
 })();

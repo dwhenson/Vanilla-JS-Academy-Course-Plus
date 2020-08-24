@@ -1,12 +1,12 @@
 // avoid global scope
 (function () {
 	/* ==========  Variables  ========== */
-	const app = document.querySelector('#app');
+	const app = document.querySelector("#app");
 	let endpoint;
 	const apiKey = `MzjNjEmTGPTcAbKdbZonokosBAmd42Xd`;
-	const dropdown = document.querySelector('#topics');
-	const placeholder = document.querySelector('#placeholder');
-	const heading = document.querySelector('#heading');
+	const dropdown = document.querySelector("#topics");
+	const placeholder = document.querySelector("#placeholder");
+	const heading = document.querySelector("#heading");
 	let topic;
 
 	/* ==========  Functions  ========== */
@@ -25,10 +25,7 @@
 	 * @return {strong}         The HTML to render
 	 */
 	function renderStories(articles) {
-		heading.innerHTML = `<h2>Here's the top five stories on ${topic.replace(
-			/-/g,
-			' '
-		)}</h2>`;
+		heading.innerHTML = `<h2>Here's the top five stories on ${topic.replace(/-/g, " ")}</h2>`;
 		app.innerHTML = articles
 			.slice(0, 4)
 			.map(function (article) {
@@ -43,10 +40,10 @@
           width="${420}">
           <figcaption>${article.multimedia[0].caption}</figcaption>
         </figure>`
-						: ''
+						: ""
 				}`;
 			})
-			.join('');
+			.join("");
 	}
 
 	/**
@@ -54,10 +51,7 @@
 	 * @return {string} the endpoint for the fetch method
 	 */
 	function createEndpoint() {
-		endpoint = `https://api.nytimes.com/svc/topstories/v2/${topic.replace(
-			/-/g,
-			''
-		)}.json?api-key=`;
+		endpoint = `https://api.nytimes.com/svc/topstories/v2/${topic.replace(/-/g, "")}.json?api-key=`;
 		return endpoint;
 	}
 	``;
@@ -86,7 +80,7 @@
 	}
 
 	/* ==========  Inits and Event Listeners  ========== */
-	dropdown.addEventListener('change', (event) => {
+	dropdown.addEventListener("change", (event) => {
 		topic = event.target.value;
 		generatePlaceholder();
 		createEndpoint(event);
