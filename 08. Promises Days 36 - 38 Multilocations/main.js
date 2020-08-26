@@ -1,19 +1,11 @@
-// GOAL Allow users to save locations between visits
-
-// STEPS
-// 1) Save checkbox checked to localStorage
-// 2) Add a check so that item is not added if it exists in localStorage already
-// 3) Remove duplicates from array before looping
-// 4) Bonus points: expire localStorage after a set period?
-
 // Avoid global scope
 (function () {
 	/* ==========  Variables  ========== */
 	// fixed parameters
 	const weatherApiKey = "c81e60446f394ac3b6efb4b5c187cafa";
+	const locationEndpoint = "https://ipapi.co/json/";
 	const weatherEndpoint = "https://api.weatherbit.io/v2.0/current?";
 	const app = document.querySelector("#app");
-	const savedLocations = "savedLocations";
 
 	/* ==========  Functions  ========== */
 	/**
@@ -24,28 +16,6 @@
 	function handleError(error) {
 		app.innerHTML = `<h2>We're sorry. Something went wrong fetching your weather information.</h2>`;
 		console.error(error);
-	}
-
-	function removeData(location) {
-		let existing = localStorage.getItem(savedLocations);
-		existing = existing ? existing.split(",") : [];
-		const index = existing.indexOf(location.id);
-		if (index > -1) {
-			existing.splice(index, 1);
-		}
-		localStorage.setItem(savedLocations, existing.toString());
-	}
-
-	function saveData(location) {
-		let existing = localStorage.getItem(savedLocations);
-		existing = existing ? existing.split(",") : [];
-		existing.push(location.id);
-		localStorage.setItem(savedLocations, existing.toString());
-	}
-
-	function saveLocation(event) {
-		if (!event.target.type === "checkbox") return;
-		event.target.checked ? saveData(event.target) : removeData(event.target);
 	}
 
 	/**
@@ -83,11 +53,7 @@
 
 		app.innerHTML += `
 			<div>${includeIcon(settings, weatherData)}</div>
-			<h2>${updateMessage(settings, weatherData)}</h2>
-				<label>
-					<input type="checkbox" name="checkbox" id="${weatherData.city_name}" autocomplete/>
-					Save ${weatherData.city_name} for next time
-				</label>`;
+			<h2>${updateMessage(settings, weatherData)}</h2>`;
 	}
 
 	function weatherPlugin(options, weatherData) {
@@ -121,10 +87,6 @@
 		});
 	}
 
-	const locations = ["Nairobi"];
-	const savedData = localStorage.getItem(savedLocations).split(",");
-
-	getWeather({ locations: [...new Set([...locations, ...savedData])] });
-	document.addEventListener("change", saveLocation);
+	getWeather({ locations: ["Nairobi", "London"] });
 	// Close void global scope
 })();
