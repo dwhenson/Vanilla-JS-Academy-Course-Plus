@@ -14,6 +14,12 @@
 	const weatherEndpoint = "https://api.weatherbit.io/v2.0/current?";
 	const app = document.querySelector("#app");
 	const savedLocations = "savedLocations";
+	const defaults = {
+		message: "It is currently {{temp}} &degC with {{conditions}} in {{city}} right now.",
+		icon: true,
+		error: "Sorry, we can't get the weather for you right now",
+		locations: [],
+	};
 
 	/* ==========  Functions  ========== */
 	/**
@@ -24,6 +30,17 @@
 	function handleError(error) {
 		app.innerHTML = `<h2>We're sorry. Something went wrong fetching your weather information.</h2>`;
 		console.error(error);
+	}
+
+	function loadData() {
+		const checkboxes = [...document.querySelectorAll("input")];
+		let existing = localStorage.getItem(savedLocations);
+		existing = existing ? existing.split(",") : "";
+		checkboxes.forEach((element) => {
+			if (existing.includes(element.id)) {
+				element.checked = true;
+			}
+		});
 	}
 
 	function removeData(location) {
@@ -76,7 +93,9 @@
 	 * @param   {Object}  weather  The weatherData object returned by getWeather
 	 * @return  {String}           The HTML to render
 	 */
-	function renderHTML(settings, weatherData) {
+	function renderHTML(options, weatherData) {
+		const settings = Object.assign(defaults, options);
+
 		if (app.previousElementSibling.className === "intro") {
 			app.previousElementSibling.remove();
 		}
@@ -85,21 +104,9 @@
 			<div>${includeIcon(settings, weatherData)}</div>
 			<h2>${updateMessage(settings, weatherData)}</h2>
 				<label>
-					<input type="checkbox" name="checkbox" id="${weatherData.city_name}" autocomplete/>
+					<input type="checkbox" name="checkbox" id="${weatherData.city_name}"/>
 					Save ${weatherData.city_name} for next time
 				</label>`;
-	}
-
-	function weatherPlugin(options, weatherData) {
-		// default options
-		const defaults = {
-			message: "It is currently {{temp}} &degC with {{conditions}} in {{city}} right now.",
-			icon: true,
-			error: "Sorry, we can't get the weather for you right now",
-			locations: [],
-		};
-		const settings = Object.assign(defaults, options);
-		renderHTML(settings, weatherData);
 	}
 
 	/**
@@ -113,15 +120,19 @@
 					return response.ok ? response.json() : Promise.reject(response);
 				})
 				.then(function (weatherData) {
-					weatherPlugin(options, weatherData.data[0]);
+					renderHTML(options, weatherData.data[0]);
+				})
+				.then(function () {
+					loadData();
 				})
 				.catch(function () {
 					handleError();
 				});
+			loadData();
 		});
 	}
 
-	const newCities = ["Nairobi"];
+	const newCities = ["London"];
 	const savedCities = localStorage.getItem(savedLocations);
 	const cites = savedCities ? [...newCities, ...savedCities.split(",")] : newCities;
 
