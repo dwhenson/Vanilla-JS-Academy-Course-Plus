@@ -6,7 +6,6 @@
 
 (function () {
 	/* ==========  Variables  ========== */
-	// fixed parameters
 	const weatherApiKey = "c81e60446f394ac3b6efb4b5c187cafa";
 	const weatherEndpoint = "https://api.weatherbit.io/v2.0/current?";
 	const app = document.querySelector("#app");
@@ -17,10 +16,11 @@
 		error: "Sorry, we can't get the weather for you right now",
 		locations: [],
 	};
+	const cites = localStorage.getItem(savedLocations) ? localStorage.getItem(savedLocations).split(",") : [];
 
 	/* ==========  Functions  ========== */
 	/**
-	 * Handle any errors during the fetches
+	 * Handles any errors during the fetches
 	 * @param   {Object}  error  The type of error
 	 * @return  {String}         The error message to render
 	 */
@@ -29,7 +29,10 @@
 		console.error(error);
 	}
 
-	function loadData() {
+	/**
+	 * Loads checked boxes from localStorage
+	 */
+	function loadCheckedBoxes() {
 		const checkboxes = [...document.querySelectorAll("input")];
 		let existing = localStorage.getItem(savedLocations);
 		existing = existing ? existing.split(",") : "";
@@ -40,6 +43,10 @@
 		});
 	}
 
+	/**
+	 * Removes location from localStorage when checkbox unchecked
+	 * @param   {Object}  location  The event.target object
+	 */
 	function removeData(location) {
 		let existing = localStorage.getItem(savedLocations);
 		existing = existing ? existing.split(",") : [];
@@ -50,6 +57,10 @@
 		localStorage.setItem(savedLocations, existing.toString());
 	}
 
+	/**
+	 * Adds location to localStorage when checkbox checked
+	 * @param   {Object}  location  The event.target object
+	 */
 	function saveData(location) {
 		let existing = localStorage.getItem(savedLocations);
 		existing = existing ? existing.split(",") : [];
@@ -57,7 +68,11 @@
 		localStorage.setItem(savedLocations, existing.toString());
 	}
 
-	function saveLocation(event) {
+	/**
+	 * Handles any changes to the checkbox states
+	 * @param   {Object}  event  The event object
+	 */
+	function changeHandler(event) {
 		if (!event.target.type === "checkbox") return;
 		if (event.target.checked) {
 			saveData(event.target);
@@ -90,7 +105,7 @@
 	}
 
 	/**
-	 * Render required information from an object to HTML
+	 * Renders required information from an object to HTML
 	 * @param   {Object}  weather  The weatherData object returned by getWeather
 	 * @return  {String}           The HTML to render
 	 */
@@ -109,7 +124,7 @@
 	}
 
 	/**
-	 * Get fetch a users location and call the weatherbit API based on first values fetched
+	 * Fetches a users location and calls the weatherbit API based on first values fetched
 	 * @return  {Object}  The object returned by the weatherbit ajax call
 	 */
 	function getWeather(options) {
@@ -122,31 +137,39 @@
 					renderHTML(options, weatherData.data[0]);
 				})
 				.then(function () {
-					loadData();
+					loadCheckedBoxes();
 				})
 				.catch(function () {
 					handleError();
 				});
-			loadData();
 		});
 	}
 
-	let cites = localStorage.getItem(savedLocations);
-	cites = cites ? cites.split(",") : [];
-
-	getWeather({ locations: cites });
-	document.addEventListener("keydown", function (event) {
+	/**
+	 * Adds new city from user input and combines values in localStorage
+	 * @param   {Event}  event  The event object
+	 */
+	function addCity(event) {
 		if (!event.target.tagName === "INPUT") return;
 		if (event.code === "Enter" || event.code === "Tab") {
 			const newCity = document.querySelector("#city");
-			let existing = localStorage.getItem(savedLocations);
-			existing = existing ? existing.split(",") : [];
+			const existing = localStorage.getItem(savedLocations) ? localStorage.getItem(savedLocations).split(",") : [];
 			existing.push(newCity.value);
 			getWeather({ locations: existing });
 			app.innerHTML = "";
 			newCity.value = "";
 		}
-	});
-	document.addEventListener("change", saveLocation);
+	}
+
+	/* ==========  Inits and Event Listeners  ========== */
+
+	// Render any locations from localStorage
+	getWeather({ locations: cites });
+
+	// Render any locations added through the input
+	document.addEventListener("keydown", addCity);
+
+	// Handles any changes to the checkboxes states
+	document.addEventListener("change", changeHandler);
 	// Close void global scope
 })();
