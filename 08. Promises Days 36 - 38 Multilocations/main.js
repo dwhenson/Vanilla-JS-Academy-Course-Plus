@@ -1,9 +1,4 @@
-// TODO
-// Massive refactor needed here!
-// Add comments to code and functions
-
 // Avoid global scope
-
 (function () {
 	/* ==========  Variables  ========== */
 	const weatherApiKey = "c81e60446f394ac3b6efb4b5c187cafa";
@@ -153,9 +148,9 @@
 		if (!event.target.tagName === "INPUT") return;
 		if (event.code === "Enter" || event.code === "Tab") {
 			const newCity = document.querySelector("#city");
-			const existing = localStorage.getItem(savedLocations) ? localStorage.getItem(savedLocations).split(",") : [];
-			existing.push(newCity.value);
-			getWeather({ locations: existing });
+			const cities = localStorage.getItem(savedLocations) ? localStorage.getItem(savedLocations).split(",") : [];
+			cities.push(newCity.value);
+			getWeather({ locations: cities });
 			app.innerHTML = "";
 			newCity.value = "";
 		}
