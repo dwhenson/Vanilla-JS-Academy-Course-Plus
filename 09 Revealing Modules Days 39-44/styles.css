@@ -1,18 +1,19 @@
 body {
 	width: 88%;
-	max-width: 40em;
+	max-width: 30em;
 	margin: 1em auto;
 }
 
-section {
+#app {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 1em;
+	justify-content: flex-start;
+	text-align: center;
 }
 
-.form {
+#locations {
 	display: flex;
-	flex: ;
 	align-items: baseline;
 	gap: 1em;
 }

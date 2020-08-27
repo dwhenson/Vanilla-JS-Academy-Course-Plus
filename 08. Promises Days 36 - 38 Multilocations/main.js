@@ -1,12 +1,9 @@
-// GOAL Allow users to save locations between visits
-
-// STEPS
-// 1) Save checkbox checked to localStorage
-// 2) Add a check so that item is not added if it exists in localStorage already
-// 3) Remove duplicates from array before looping
-// 4) Bonus points: expire localStorage after a set period?
+// TODO
+// Massive refactor needed here!
+// Add comments to code and functions
 
 // Avoid global scope
+
 (function () {
 	/* ==========  Variables  ========== */
 	// fixed parameters
@@ -15,7 +12,7 @@
 	const app = document.querySelector("#app");
 	const savedLocations = "savedLocations";
 	const defaults = {
-		message: "It is currently {{temp}} &degC with {{conditions}} in {{city}} right now.",
+		message: "It is {{temp}} &degC with {{conditions}} in {{city}} right now.",
 		icon: true,
 		error: "Sorry, we can't get the weather for you right now",
 		locations: [],
@@ -62,7 +59,11 @@
 
 	function saveLocation(event) {
 		if (!event.target.type === "checkbox") return;
-		event.target.checked ? saveData(event.target) : removeData(event.target);
+		if (event.target.checked) {
+			saveData(event.target);
+		} else {
+			removeData(event.target);
+		}
 	}
 
 	/**
@@ -96,17 +97,15 @@
 	function renderHTML(options, weatherData) {
 		const settings = Object.assign(defaults, options);
 
-		if (app.previousElementSibling.className === "intro") {
-			app.previousElementSibling.remove();
-		}
-
 		app.innerHTML += `
+		<section>
 			<div>${includeIcon(settings, weatherData)}</div>
 			<h2>${updateMessage(settings, weatherData)}</h2>
 				<label>
 					<input type="checkbox" name="checkbox" id="${weatherData.city_name}"/>
 					Save ${weatherData.city_name} for next time
-				</label>`;
+				</label>
+		</section>`;
 	}
 
 	/**
@@ -132,11 +131,22 @@
 		});
 	}
 
-	const newCities = ["London"];
-	const savedCities = localStorage.getItem(savedLocations);
-	const cites = savedCities ? [...newCities, ...savedCities.split(",")] : newCities;
+	let cites = localStorage.getItem(savedLocations);
+	cites = cites ? cites.split(",") : [];
 
 	getWeather({ locations: cites });
+	document.addEventListener("keydown", function (event) {
+		if (!event.target.tagName === "INPUT") return;
+		if (event.code === "Enter" || event.code === "Tab") {
+			const newCity = document.querySelector("#city");
+			let existing = localStorage.getItem(savedLocations);
+			existing = existing ? existing.split(",") : [];
+			existing.push(newCity.value);
+			getWeather({ locations: existing });
+			app.innerHTML = "";
+			newCity.value = "";
+		}
+	});
 	document.addEventListener("change", saveLocation);
 	// Close void global scope
 })();
