@@ -169,3 +169,6 @@ document.addEventListener("keydown", addCity);
 document.addEventListener("change", changeHandler);
 // Close void global scope
 // })();
+
+/* ==========    ========== */
+/* ----    ---- */

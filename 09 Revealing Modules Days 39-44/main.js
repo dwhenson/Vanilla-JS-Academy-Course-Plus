@@ -1,11 +1,41 @@
-// GOAL Create a helper library with public methods you can use to…
-
-// STEPS
-// Convert a NodeList to an array.
-// Get the first matching element in the DOM.
-// Get all matching elements in the DOM as an array.
-// Add a class to all elements in an array.
-// Remove a class from all elements in an array
-
 // Avoid global scope
-(function () {})();
+const ex = (function () {
+	/* ==========  Variables  ========== */
+
+	/* ==========  Functions  ========== */
+
+	// holds public methods
+	const methods = {};
+
+	/**
+	 * converts nodelist to array
+	 * @param   {object}  element  The HTML element to create a list of
+	 * @return  {array}            The nodelist converted to an array
+	 */
+	function convertNodelist(element) {
+		return [...document.querySelectorAll(element)];
+	}
+
+	/**
+	 * finds first matching element in array
+	 * @param   {object}  element  The HTML element to match
+	 * @return  {array}            The matching element
+	 */
+	function findMatching(element) {
+		return document.querySelector(element);
+	}
+
+	/*
+  // Methods
+    */
+
+	methods.convert = function (element) {
+		return convertNodelist(element);
+	};
+
+	methods.matches = function (element) {
+		return findMatching(element);
+	};
+
+	return methods;
+})();
