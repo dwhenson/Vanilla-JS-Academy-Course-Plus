@@ -3,3 +3,13 @@ body {
 	max-width: 30em;
 	margin: 1em auto;
 }
+
+.btn-blue {
+	background-color: #08c;
+	color: #fff;
+}
+
+.btn-purple {
+	background-color: rebeccapurple;
+	color: #fff;
+}

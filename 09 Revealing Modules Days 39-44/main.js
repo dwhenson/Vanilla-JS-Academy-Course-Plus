@@ -1,19 +1,13 @@
 // Avoid global scope
-const ex = (function () {
-	/* ==========  Variables  ========== */
-
+const $ = (function () {
 	/* ==========  Functions  ========== */
-
-	// holds public methods
-	const methods = {};
-
 	/**
-	 * converts nodelist to array
+	 * converts nodeList to array
 	 * @param   {object}  element  The HTML element to create a list of
-	 * @return  {array}            The nodelist converted to an array
+	 * @return  {array}            The nodeList converted to an array
 	 */
-	function convertNodelist(element) {
-		return [...document.querySelectorAll(element)];
+	function convertNodeList(elements) {
+		return [...elements];
 	}
 
 	/**
@@ -21,21 +15,29 @@ const ex = (function () {
 	 * @param   {object}  element  The HTML element to match
 	 * @return  {array}            The matching element
 	 */
-	function findMatching(element) {
-		return document.querySelector(element);
+	function findFirst(elements) {
+		return elements[0];
 	}
 
 	/*
-  // Methods
+  // The constructor object
     */
 
-	methods.convert = function (element) {
-		return convertNodelist(element);
+	const Constructor = function (element) {
+		this.elements = document.querySelectorAll(element);
 	};
 
-	methods.matches = function (element) {
-		return findMatching(element);
+	Constructor.prototype.createArray = function () {
+		return convertNodeList(this.elements);
 	};
 
-	return methods;
+	Constructor.prototype.findFirst = function () {
+		return findFirst(this.elements);
+	};
+
+	return Constructor;
 })();
+
+const btn = new $("button");
+console.log(btn.createArray());
+console.log(btn.findFirst());
