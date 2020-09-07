@@ -8,11 +8,14 @@ section {
 	display: flex;
 	align-items: center;
 	gap: 1em;
+	color: #000;
 }
-
 .form {
-	display: flex;
-	flex: ;
 	align-items: baseline;
 	gap: 1em;
+	display: flex;
+}
+
+h1 {
+	background-color: #fff;
 }

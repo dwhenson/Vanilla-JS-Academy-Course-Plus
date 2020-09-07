@@ -4,7 +4,8 @@
 	"description": "Vanilla JS Academy Extra Credit Files",
 	"main": "index.html",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
+		"fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss}' "
 	},
 	"author": "Dave Henson",
 	"license": "MIT",
@@ -23,6 +24,7 @@
 		"eslint-plugin-react-hooks": "^4.0.0",
 		"lit-html": "^1.3.0",
 		"prettier": "^2.0.5",
+		"prettier-eslint-cli": "^5.0.0",
 		"stylelint": "^13.6.1",
 		"stylelint-config-prettier": "^8.0.2",
 		"stylelint-config-property-sort-order-smacss": "^6.3.0",
