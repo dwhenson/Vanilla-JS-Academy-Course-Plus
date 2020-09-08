@@ -17,7 +17,7 @@
 	/**
 	 * Get user data from local storage
 	 */
-	function getStoredData() {
+	function loadData() {
 		const fields = [...document.querySelectorAll("input", "textArea")];
 		fields.forEach((field) => {
 			const data = localStorage.getItem(field.name);
@@ -43,7 +43,7 @@
 		clearData();
 	}
 	/* ==========  Inits and Event Listeners  ========== */
-	getStoredData();
+	loadData();
 	form.addEventListener("input", inputHandler);
 	button.addEventListener("click", submitHandler);
 })();
