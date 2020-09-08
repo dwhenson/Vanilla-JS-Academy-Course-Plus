@@ -22,6 +22,15 @@
 		localStorage.setItem(event.target.name, event.target.value);
 	}
 
+	function getStoredData() {
+		const fields = [...document.querySelectorAll("input", "textArea")];
+		fields.forEach((field) => {
+			const data = localStorage.getItem(field.name);
+			if (!data) return;
+			field.value = data;
+		});
+	}
 	/* ==========  Inits and Event Listeners  ========== */
+	getStoredData();
 	form.addEventListener("input", inputHandler);
 })();
