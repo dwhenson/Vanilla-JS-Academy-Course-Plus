@@ -1,3 +1,12 @@
+// GOAL
+// Modify our form saver script to store all of the fields as a single entry in localStorage.
+
+// STEPS
+// 1. Set up prefix variable and create empty object
+// 2. Change input handler to add key:value pair to object (get object, parse and then add)
+// 3. Update loadData to i) check if object exists ii) if so, parse then loop and add data, otherwise create empty object
+// 4. Edit clearData to remove entire object
+
 // Avoid global scope
 (function () {
 	/* ==========  Variables  ========== */
