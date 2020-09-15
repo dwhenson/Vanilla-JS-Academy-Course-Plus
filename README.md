@@ -1,2 +1,2 @@
 # Foundations Academy Plus
- Additional work from GMT Vanilla JS Academy
+ Additional work from [JS Academy Course](https://gomakethings.com).
